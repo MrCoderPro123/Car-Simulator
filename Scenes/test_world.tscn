@@ -1,19 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://075rt2irgf2x"]
+[gd_scene load_steps=6 format=3 uid="uid://075rt2irgf2x"]
 
 [ext_resource type="Script" uid="uid://c4nq3h8o7wlgg" path="res://Scripts/test_ui.gd" id="1_au00k"]
 [ext_resource type="PackedScene" uid="uid://cy35bqnnqcdnf" path="res://Scenes/car.tscn" id="2_707cn"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_au00k"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_707cn"]
+sky_material = SubResource("ProceduralSkyMaterial_au00k")
+
+[sub_resource type="Environment" id="Environment_mq1bj"]
+background_mode = 2
+sky = SubResource("Sky_707cn")
+tonemap_mode = 2
+
 [node name="Test World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mq1bj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
-size = Vector3(10, 1, 10)
+size = Vector3(10, 1, 100)
+
+[node name="Camera3D" type="Camera3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 0.97323906, 0.22979495, 0, -0.22979495, 0.97323906, 0.0023789406, 2.2882493, 2.3645387)
 
 [node name="Car" parent="." instance=ExtResource("2_707cn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0281396, 0)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.97323906, 0.22979495, 0, -0.22979495, 0.97323906, 0.0023789406, 2.2882493, 2.3645387)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
