@@ -1,7 +1,43 @@
-[gd_scene format=3 uid="uid://075rt2irgf2x"]
+[gd_scene load_steps=3 format=3 uid="uid://075rt2irgf2x"]
+
+[ext_resource type="Script" uid="uid://c4nq3h8o7wlgg" path="res://Scripts/test_ui.gd" id="1_au00k"]
+[ext_resource type="PackedScene" uid="uid://cy35bqnnqcdnf" path="res://Scenes/car.tscn" id="2_707cn"]
 
 [node name="Test World" type="Node3D"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
 size = Vector3(10, 1, 10)
+
+[node name="Car" parent="." instance=ExtResource("2_707cn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0281396, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.97323906, 0.22979495, 0, -0.22979495, 0.97323906, 0.0023789406, 2.2882493, 2.3645387)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Test UI" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("car")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_au00k")
+car = NodePath("../../Car")
+
+[node name="Torqe" type="Label" parent="CanvasLayer/Test UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 72
+text = "Torqe: 0"
+
+[node name="RPM" type="Label" parent="CanvasLayer/Test UI"]
+layout_mode = 1
+offset_top = 80.0
+offset_right = 237.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 72
+text = "RPM: 0"
