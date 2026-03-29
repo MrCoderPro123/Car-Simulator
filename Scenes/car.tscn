@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cy35bqnnqcdnf"]
+[gd_scene load_steps=6 format=3 uid="uid://cy35bqnnqcdnf"]
 
 [ext_resource type="Script" uid="uid://bkix4a5eswutp" path="res://Scripts/car.gd" id="1_go66d"]
 [ext_resource type="Script" uid="uid://d11fatoyqkcga" path="res://Scripts/engine.gd" id="1_wqo35"]
+[ext_resource type="Script" uid="uid://0p2focct8gfv" path="res://Scripts/transmission.gd" id="3_1sfmx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_foosu"]
 
@@ -13,6 +14,9 @@ script = ExtResource("1_go66d")
 [node name="Engine" type="Node3D" parent="."]
 script = ExtResource("1_wqo35")
 max_torqe = 90000
+
+[node name="Transmission" type="Node3D" parent="."]
+script = ExtResource("3_1sfmx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_foosu")

@@ -2,7 +2,7 @@ class_name CarEngine
 extends Node3D
 
 @export var idle_rpm := 1000
-@export var stall_rpm := 901
+@export var stall_rpm := 800
 @export var idle_decay := 5.0
 @export var max_rpm := 9000
 @export var accelaration_speed := 3
@@ -50,5 +50,5 @@ func _process(delta: float) -> void:
 		rpm = lerp(rpm, 0, 5 * delta)
 		torqe = lerp(torqe, 0, 5 * delta)
 	
-	print(torqe)
+	#print(torqe)
 	
